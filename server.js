@@ -5,6 +5,10 @@ import fs from 'fs';
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.json({ status: 'online', name: 'ScriptSmith-AI API', endpoints: ['POST /api/create-full-ebook', 'GET /api/download-ebook'] });
+});
+
 app.post('/api/create-full-ebook', async (req, res) => {
   try {
     const { title, topic, options } = req.body;
@@ -29,5 +33,5 @@ app.get('/api/download-ebook', (req, res) => {
 
 const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`✍️ ScriptSmith-AI rodando na porta ${PORT} com pipeline completo e download ativados`);
+  console.log(`✍️ ScriptSmith-AI rodando na porta ${PORT}`);
 });
